@@ -31,6 +31,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{!! route('ejemplo') !!}" class="nav-link {{ Request::is('ejemplo*') ? 'active':'' }}">
+            <i class="nav-icon fa fa-users"></i>
+            <p>Ejemplo <span class="badge badge-info right">2</span></p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
             <i class="nav-icon fa fa-power-off text-danger"></i>

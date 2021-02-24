@@ -25,4 +25,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function ejemplo()
+    {
+        return view('ejemplo.index');
+    }
+
+    public function create_ejemplo()
+    {
+        return view('ejemplo.create');
+    }
 }
