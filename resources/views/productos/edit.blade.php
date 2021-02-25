@@ -41,7 +41,7 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-12">
         <!-- Horizontal Form -->
         <div class="card card-primary card-outline">
           {!! Form::open(['route' => ['productos.update',$producto->id], 'method' => 'PUT', 'name' => 'registrar_producto', 'id' => 'registrar_producto', 'data-parsley-validate']) !!}
@@ -52,15 +52,13 @@
             <!-- /.card-header -->
             <!-- form start -->
             <div class="card-body">
-
               <div class="form-group text-left">
-                    <div class="icheck-success d-inline">
-                      <input type="checkbox" name="status" id="status" @if($producto->status=="Activo") checked @endif value="Activo">
-                      <label for="status">Activo</label>
-                      <p align="center"><small>Todos los campos <b style="color: red;">*</b> son requeridos.</small></p>
-                    </div>
-                  </div>
-
+                <div class="icheck-success d-inline">
+                  <input type="checkbox" name="status" id="status" @if($producto->status=="Activo") checked @endif value="Activo">
+                  <label for="status">Activo</label>
+                  <p align="center"><small>Todos los campos <b style="color: red;">*</b> son requeridos.</small></p>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-sm-4">
                   <div class="form-group">
@@ -113,51 +111,47 @@
                 </div>                
               </div>
               <div class="row">
-              	<div class="col-md-4">
+              	<div class="col-md-3">
               		<div class="form-group">
                     <label for="con_detalles">Con Detalles</label>
                     <input type="number" name="con_detalles" id="con_detalles" class="form-control" placeholder="0" value="{{ $producto->con_detalles }}" min="0">
                   </div>
+                </div>
+                <div class="col-md-3">
                   <div class="form-group">
                     <label for="vendidos">Vendidos</label>
                     <input type="number" name="vendidos" id="vendidos" class="form-control" placeholder="0" value="{{ $producto->vendidos }}" min="0">
                   </div>
               	</div>
-              	<div class="col-md-4">
+              	<div class="col-md-3">
               	  <div class="form-group">
                     <label for="id_categoria">Categoría <b style="color: red;">*</b></label>
-                    <select name="id_categoria" id="id_categoria" class="form-control select2bs4" required="required">
+                    <select name="id_categoria" id="id_categoria" class="form-control select2bs4" required="required" style="width: 100%;">
                     	@foreach($categorias as $key)
                     	<option value="{{ $key->id }}" @if($producto->id_categoria==$key->id ) selected="selected" @endif >{{ $key->categoria }}</option>
                     	@endforeach
                     </select>
                   </div>
               	</div>
-              	<div class="col-md-4">
+              	<div class="col-md-3">
               	  <div class="form-group">
-                    <label for="fotos">Fotos <b style="color: red;">*</b></label>
-                    <input type="file" multiple="multiple" accept="image/*" name="fotos" id="fotos" class="form-control" >
+                    <label for="fotos1" class="">Fotos <b style="color: red;">*</b></label>
+                    <div class="custom-file">
+                      <label for="fotos" class="custom-file-label">Seleccione fotos... <b style="color: red;">*</b></label>
+                      <input type="file" multiple="multiple" accept="image/*" name="fotos" id="fotos" class="custom-file-input" >
+                    </div>
                   </div>
               	</div>
               </div>
             </div>
-            <div class="row">
-            	<div class="col-md-12">
-            		<table border="1">
-            		@foreach($producto->imagenes as $key)
-            		   @if($columnas==0)
-            		       <tr>
-            		   @endif
-            		   	<td width="100px" height="100px" id="id_columna{{ $key->id }}"><img src="{{ asset($key->url) }}" /></td>
-            		   	@php $columnas++; $total--; @endphp
-            		   	@if($columnas==5) $columnas=0; @endif
-            		   @if($total==0 || $columnas==0) </tr> @endif
-            		   @if($total==0)
-
-            		   @endif
-            		@endforeach
-            		</table>
-            	</div>
+            <div class="row mt-4" style="padding: 15px;">
+          		@foreach($producto->imagenes as $key)
+              	<div class="col-sm-3" style="border: 1px solid black; padding: 20px;">
+                  <div class="position-relative">
+            		   	<img src="{{ asset($key->url) }}" class="img-fluid"/>
+                  </div>
+              	</div>
+          		@endforeach
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
