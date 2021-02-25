@@ -83,7 +83,7 @@
             <!-- /.card-body -->
             <div class="card-footer">
               <button type="submit" class="btn btn-info float-right">Guardar</button>
-              <button type="reset" class="btn btn-default">Cancelar</button>
+              <button type="reset" class="btn btn-danger">Cancelar</button>
             </div>
           </form>
         </div>

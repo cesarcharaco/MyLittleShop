@@ -37,4 +37,6 @@
 <script src="{{ asset('admin/plugins/parsleyjs/i18n/es.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
+@toastr_js
+@toastr_render
 @yield('scripts')

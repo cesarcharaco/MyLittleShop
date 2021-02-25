@@ -8,7 +8,7 @@ class Productos extends Model
 {
     protected $table='productos';
 
-    protected $fillable=['id','codigo','nombre','costo','precio_und','precio_mayor','descripcion','existencia','disponible','con_detalles','vendidos'];
+    protected $fillable=['id','codigo','nombre','costo','precio_und','precio_mayor','descripcion','status','existencia','disponible','con_detalles','vendidos'];
 
     public function categorias(){
 

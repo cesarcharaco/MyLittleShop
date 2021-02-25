@@ -31,6 +31,18 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{!! route('categorias.index') !!}" class="nav-link {{ Request::is('categorias.index*') ? 'active':'' }}">
+            <i class="nav-icon fa fa-tags"></i>
+            <p>Categorías {{-- <span class="badge badge-info right">2</span> --}}</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{!! route('productos.index') !!}" class="nav-link {{ Request::is('productos.index*') ? 'active':'' }}">
+            <i class="nav-icon fa fa-suitcase"></i>
+            <p>Productos {{-- <span class="badge badge-info right">2</span> --}}</p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{!! route('ejemplo') !!}" class="nav-link {{ Request::is('ejemplo*') ? 'active':'' }}">
             <i class="nav-icon fa fa-users"></i>
             <p>Ejemplo <span class="badge badge-info right">2</span></p>

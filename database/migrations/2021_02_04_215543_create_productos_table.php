@@ -15,17 +15,18 @@ class CreateProductosTable extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('codigo');
+            $table->string('codigo')->unique();
             $table->string('nombre');
             $table->unsignedBigInteger('id_categoria');
             $table->double('costo');
             $table->double('precio_und');
-            $table->double('precio_mayor');
-            $table->text('descripcion');
+            $table->double('precio_mayor')->nullable();
+            $table->text('descripcion')->nullable();
+            $table->enum('status',['Activo','Inactivo'])->default('Activo');
             $table->integer('existencia');
             $table->integer('disponible');
-            $table->integer('con_detalles');
-            $table->integer('vendidos');
+            $table->integer('con_detalles')->nullable();
+            $table->integer('vendidos')->nullable();
 
             $table->foreign('id_categoria')->references('id')->on('categorias')->onDelete('cascade');
             $table->timestamps();

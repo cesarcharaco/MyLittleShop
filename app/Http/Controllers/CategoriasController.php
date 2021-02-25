@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Categorias;
+use App\Productos;
 class CategoriasController extends Controller
 {
     /**
@@ -13,7 +14,11 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        //
+        $categorias=Categorias::all();
+
+        $i=1;
+
+        return view('categorias/index',compact('categorias','i'));
     }
 
     /**
@@ -23,7 +28,7 @@ class CategoriasController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias/create');
     }
 
     /**
@@ -34,7 +39,22 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->categoria==""){
+            toastr()->warning('Alerta!!', 'Debe ingresar el nombre de la categoría');
+            return redirect()->back();
+        }else{
+            $buscar=Categorias::where('categoria',$request->categoria)->count();
+            if($buscar > 0){
+              toastr()->warning('Alerta!!', 'El nombre de la categoría ya existe registrado');  
+              return redirect()->back();
+            }else{
+                $categoria=new Categorias();
+                $categoria->categoria=$request->categoria;
+                $categoria->save();
+                toastr()->success('Éxito!!', 'Categoría registrada');
+                return redirect()->to('categorias');
+            }
+        }
     }
 
     /**
@@ -43,9 +63,9 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_categoria)
     {
-        //
+
     }
 
     /**
@@ -54,9 +74,10 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_categoria)
     {
-        //
+        $categoria=Categorias::find($id_categoria);
+        return view('categorias.edit',compact('categoria'));
     }
 
     /**
@@ -66,9 +87,24 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_categoria)
     {
-        //
+        if($request->categoria==""){
+            toastr()->warning('Alerta!!', 'Debe ingresar el nombre de la categoría');
+            return redirect()->back();
+        }else{
+            $buscar=Categorias::where('categoria',$request->categoria)->where('id','<>',$id_categoria)->count();
+            if($buscar > 0){
+              toastr()->warning('Alerta!!', 'El nombre de la categoría ya existe registrado');  
+              return redirect()->back();
+            }else{
+                $categoria=Categorias::find($id_categoria);
+                $categoria->categoria=$request->categoria;
+                $categoria->save();
+                toastr()->success('Éxito!!', 'Categoría Actualizada');
+                return redirect()->to('categorias');
+            }
+        }
     }
 
     /**
@@ -77,8 +113,22 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        //dd($request->all());
+        $productos=Productos::where('id_categoria',$request->id_categoria)->count();
+        if($productos>0){
+            toastr()->warning('Alerta!!', 'Categoría asignada a prducto(s), deberá cambiar la misma en los productos que la tengan');
+                return redirect()->to('categorias');
+        }else{
+            $categoria=Categorias::find($request->id_categoria);
+            if($categoria->delete()){
+                toastr()->success('Éxito!!', 'Categoría eliminada');
+                return redirect()->to('categorias');
+            }else{
+                toastr()->danger('Error!!', 'No se pudo eliminar la categoría');
+                return redirect()->to('categorias');
+            }
+        }
     }
 }
