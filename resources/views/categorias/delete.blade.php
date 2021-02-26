@@ -12,7 +12,7 @@
                 <div class="modal-body">
                     <center>
                     <h3>¡ATENCIÓN!</h3>
-                    <p>Está a punto de eliminar ésta . Ésta opción no se podrá deshacer</p>
+                    <p>Está a punto de eliminar ésta categoría. Ésta opción no se podrá deshacer</p>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="id_categoria" id="id_categoria">

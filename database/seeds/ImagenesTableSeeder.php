@@ -31,27 +31,19 @@ class ImagenesTableSeeder extends Seeder
 
         \DB::table('productos_has_imagenes')->insert([
         	['id_producto' => 1,'id_imagen' => 1],
-        	['id_producto' => 1,'id_imagen' => 2],
-            ['id_producto' => 1,'id_imagen' => 1],
-            ['id_producto' => 1,'id_imagen' => 2],
-            ['id_producto' => 1,'id_imagen' => 1],
-            ['id_producto' => 1,'id_imagen' => 2],
-            ['id_producto' => 1,'id_imagen' => 1],
-            ['id_producto' => 1,'id_imagen' => 2],
-            ['id_producto' => 1,'id_imagen' => 1],
-            ['id_producto' => 1,'id_imagen' => 2],
-        	['id_producto' => 2,'id_imagen' => 3],
-        	['id_producto' => 3,'id_imagen' => 4],
-        	['id_producto' => 3,'id_imagen' => 5],
-        	['id_producto' => 3,'id_imagen' => 6],
-        	['id_producto' => 4,'id_imagen' => 7],
-        	['id_producto' => 4,'id_imagen' => 8],
-        	['id_producto' => 5,'id_imagen' => 9],
-        	['id_producto' => 6,'id_imagen' => 10],
-        	['id_producto' => 7,'id_imagen' => 11],
-        	['id_producto' => 8,'id_imagen' => 12],
-        	['id_producto' => 9,'id_imagen' => 13],
-        	['id_producto' => 10,'id_imagen' => 14]
+        	['id_producto' => 2,'id_imagen' => 2],
+            ['id_producto' => 3,'id_imagen' => 3],
+        	['id_producto' => 4,'id_imagen' => 4],
+        	['id_producto' => 5,'id_imagen' => 5],
+        	['id_producto' => 6,'id_imagen' => 6],
+        	['id_producto' => 7,'id_imagen' => 7],
+        	['id_producto' => 8,'id_imagen' => 8],
+        	['id_producto' => 9,'id_imagen' => 9],
+        	['id_producto' => 10,'id_imagen' => 10],
+        	['id_producto' => 11,'id_imagen' => 11],
+        	['id_producto' => 12,'id_imagen' => 12],
+        	['id_producto' => 13,'id_imagen' => 13],
+        	['id_producto' => 14,'id_imagen' => 14]
         ]);
     }
 }

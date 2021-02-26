@@ -15,6 +15,26 @@
         </ol>
       </div><!-- /.col -->
     </div><!-- /.row -->
+    <div class="row">
+        <div class="col-md-12">
+          @include('flash::message')
+        @if(count($errors))
+            <div class="alert-list m-4">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+        @include('productos.delete')
+        </div>  
+      </div>
   </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
@@ -69,7 +89,7 @@
                   <td>
                     <a href="#" class="btn btn-info btn-sm"><i class="fa fa-search"></i></a>
                     <a href="{{ route('productos.edit',$key->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil-alt"></i></a>
-                    <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                    <a href="#" role="button" aria-expanded="false" aria-controls="EliminarProducto" class="btn btn-danger btn-sm" onclick="eliminarProducto('{{$key->id}}')"data-toggle="tooltip" data-placement="top" title="Seleccione para eliminar la producto del sistema"><i class="fa fa-trash"></i></a>
                   </td>
                 </tr>
                 @endforeach
@@ -84,6 +104,32 @@
   </div><!-- /.container-fluid -->
 </section>
 <!-- /.content -->
+<div class="modal fade" id="modal-eliminar-imagen">
+    <div class="modal-dialog">
+      <div class="modal-content bg-danger">
+        <div class="modal-header">
+          <h4 class="modal-title">Eliminar Imagen</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {!! Form::open(['route' => ['eliminar_imagen'], 'method' => 'POST', 'name' => 'eliminar_imagen', 'id' => 'eliminar_imagen', 'data-parsley-validate']) !!}
+            @csrf
+        <div class="modal-body">
+          <p>Está seguro de eliminar la imagen? No podrá deshacer ésta acción</p>
+          <input type="hidden" name="id_imagen" id="id_imagen">
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-outline-light" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-outline-light">Eliminar</button>
+        </div>
+        {!! Form::close() !!}
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+  <!-- /.modal -->
 @endsection
 @section('scripts')
 <script>
@@ -102,5 +148,10 @@
       "responsive": true,
     });
   });
+  function eliminarProducto(id) {
+        $('#EliminarProducto').modal('show');
+        $('#id_producto').val(id);
+        //$('#lista').fadeOut('fast');
+  }
 </script>
 @endsection

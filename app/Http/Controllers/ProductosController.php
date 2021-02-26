@@ -93,8 +93,8 @@ class ProductosController extends Controller
 
                     $producto->imagenes()->attach($img);
                 }
-                toastr()->success('Éxito!!', 'Producto registrado');
-                return redirect()->back();
+                toastr()->success('Éxito!!', 'Producto Registrado');
+                return redirect()->to('productos');
 
             }
         }
@@ -136,9 +136,71 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductosRequest $request, $id_producto)
     {
-        //
+        //dd($request->all());
+        $buscar_nombre=Productos::where('nombre',$request->nombre)->where('id','<>',$id_producto)->count();
+        $buscar_codigo=Productos::where('codigo',$request->codigo)->where('id','<>',$id_producto)->count();
+        
+        
+        if($buscar_nombre > 0){
+            toastr()->warning('Alerta!!', 'El nombre ya se encuentra registrado');
+            return redirect()->back();    
+        }else{
+            if($buscar_codigo > 0){
+                toastr()->warning('Alerta!!', 'El código ya se encuentra registrado');
+                return redirect()->back();
+            }else{
+                if($request->fotos!=null){
+                    $validacion=$this->validar_imagen($request->file('fotos'));
+                    if($validacion['valida'] > 0){
+                        toastr()->warning('intente otra vez!!', $validacion['mensaje'].'');
+                        return redirect()->back();
+                    }  
+                }
+                $producto=Productos::find($id_producto);
+                $producto->codigo=$request->codigo;
+                $producto->nombre=$request->nombre;
+                $producto->costo=$request->costo;
+                $producto->id_categoria=$request->id_categoria;
+                $producto->descripcion=$request->descripcion;
+                $producto->existencia=$request->existencia;
+                $producto->disponible=$request->disponible;
+                $producto->precio_und=$request->precio_und;
+                $producto->precio_mayor=$request->precio_mayor;
+                $producto->con_detalles=$request->con_detalles;
+                $producto->vendidos=$request->vendidos;
+                if($request->status!=null){
+                    $producto->status=$request->status;
+                }else{
+                    $producto->status="Inactivo";
+                }
+                $producto->save();
+                if($request->fotos!=null){
+                    //cargando fotos
+                $fotos=$request->file('fotos');
+                    foreach($fotos as $foto){
+                        $codigo=$this->generarCodigo();
+                        /*
+                        $validatedData = $request->validate([
+                            'fotos' => 'mimes:jpeg,png'
+                        ]);*/
+                        $name=$codigo."_".$foto->getClientOriginalName();
+                        $foto->move(public_path().'/img_productos', $name);  
+                        $url ='img_productos/'.$name;
+                        $img=new Imagenes();
+                        $img->nombre=$name;
+                        $img->url=$url;
+                        $img->save();
+
+                        $producto->imagenes()->attach($img);
+                    }
+
+                }
+                toastr()->success('Éxito!!', 'Producto Actualizado');
+                return redirect()->to('productos');
+            }
+        }
     }
 
     /**
@@ -147,18 +209,45 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $producto=Productos::find($request->id_producto);
+        foreach($producto->imagenes as $key){
+            $url=$key->url;
+            if($key->delete()){
+                unlink($url);
+            }
+        }
+        if($producto->delete()){
+            toastr()->success('Éxito!!', 'Producto Eliminado');
+            return redirect()->back();
+        }else{
+            toastr()->error('Error!!', 'El Producto no pudo ser Eliminado');
+            return redirect()->back();
+        }
+    }
+
+    public function eliminar_imagen(Request $request){
+
+        $imagen=Imagenes::find($request->id_imagen);
+        $url=$imagen->url;
+        if($imagen->delete()){
+            unlink($url);
+            toastr()->success('Éxito!!', 'Imagen Eliminada');
+                return redirect()->back();
+        }else{
+            toastr()->error('Error!!', 'La Imagen no pudo ser Eliminada');
+                return redirect()->back();
+        }
     }
 
     protected function validar_imagen($fotos)
     {
-        //dd($imagen);
+        //dd($fotos);
         $mensaje="";
         $valida=0;
         foreach($fotos as $foto){
-
+            //dd('asasas');
             $img=getimagesize($foto);
             $size=$foto->getClientSize();
             $width=$img[0];

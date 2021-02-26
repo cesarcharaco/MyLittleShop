@@ -92,15 +92,15 @@
     <div class="product-screens">
 
       <div class="product-screen-1" data-aos="fade-up" data-aos-delay="400">
-      <img src="{{ asset('img_productos/1.PNG') }}" alt="">
+      <img src="{{ asset('img_productos/15.PNG') }}" alt="">
       </div>
 
       <div class="product-screen-2" data-aos="fade-up" data-aos-delay="200">
-        <img src="{{ asset('img_productos/7.PNG') }}" alt="">
+        <img src="{{ asset('img_productos/17.jpg') }}" alt="">
       </div>
 
       <div class="product-screen-3" data-aos="fade-up">
-        <img src="{{ asset('img_productos/11.PNG') }}" alt="">
+        <img src="{{ asset('img_productos/19.jpg') }}" alt="">
       </div>
 
     </div>

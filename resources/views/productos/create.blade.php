@@ -77,7 +77,7 @@
                 <div class="col-sm-4">
                   <div class="form-group">
                     <label for="costo">Costo <b style="color: red;">*</b></label>
-                    <input type="number" name="costo" id="costo" class="form-control mayusculas" required="required" min="0" placeholder="Ingrese apellidos..." value="{!! old('costo') !!}">
+                    <input type="number" step="0.01" name="costo" id="costo" class="form-control mayusculas" required="required" min="0" placeholder="Ingrese apellidos..." value="{!! old('costo') !!}">
                   </div>
                 </div>
               </div>
@@ -94,21 +94,21 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="existencia">Existencia <b style="color: red;">*</b></label>
-                    <input type="number" name="existencia" id="existencia" class="form-control" required="required" placeholder="0" min="0" value="{{ old('existencia') }}">
+                    <input type="number" step="0.01" name="existencia" id="existencia" class="form-control" required="required" placeholder="0" min="0" value="{{ old('existencia') }}">
                   </div>
                   <div class="form-group">
                     <label for="disponible">Disponible <b style="color: red;">*</b></label>
-                    <input type="number" name="disponible" id="disponible" class="form-control" required="required" placeholder="0" min="0" value="{{ old('disponible') }}">
+                    <input type="number" step="0.01" name="disponible" id="disponible" class="form-control" required="required" placeholder="0" min="0" value="{{ old('disponible') }}">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="precio_und">Precio Unidad<b style="color: red;">*</b></label>
-                    <input type="number" name="precio_und" id="precio_und" class="form-control" required="required" placeholder="0" min="0" value="{{ old('precio_und') }}">
+                    <input type="number" step="0.01" name="precio_und" id="precio_und" class="form-control" required="required" placeholder="0" min="0" value="{{ old('precio_und') }}">
                   </div>
                   <div class="form-group">
                     <label for="precio_mayor">Precio Mayor</label>
-                    <input type="number" name="precio_mayor" id="precio_mayor" class="form-control" placeholder="0" value="0" min="0">
+                    <input type="number" step="0.01" name="precio_mayor" id="precio_mayor" class="form-control" placeholder="0" value="0" min="0">
                   </div>
                 </div>                
               </div>
@@ -116,11 +116,11 @@
               	<div class="col-md-4">
               		<div class="form-group">
                     <label for="con_detalles">Con Detalles</label>
-                    <input type="number" name="con_detalles" id="con_detalles" class="form-control" placeholder="0" value="0" min="0">
+                    <input type="number" step="0.01" name="con_detalles" id="con_detalles" class="form-control" placeholder="0" value="0" min="0">
                   </div>
                   <div class="form-group">
                     <label for="vendidos">Vendidos</label>
-                    <input type="number" name="vendidos" id="vendidos" class="form-control" placeholder="0" value="0" min="0">
+                    <input type="number" step="0.01" name="vendidos" id="vendidos" class="form-control" placeholder="0" value="0" min="0">
                   </div>
               	</div>
               	<div class="col-md-4">
@@ -136,7 +136,7 @@
               	<div class="col-md-4">
               	  <div class="form-group">
                     <label for="fotos">Fotos <b style="color: red;">*</b></label>
-                    <input type="file" multiple="multiple" accept="image/*" name="fotos[]" id="fotos" class="form-control" >
+                    <input type="file" multiple="multiple" accept="image/*" name="fotos[]" id="fotos" class="form-control" required="required" >
                   </div>
               	</div>
               </div>
