@@ -12,21 +12,7 @@
 */
 use App\Productos;
 
-Route::get('/', function () {
-	$productos=Productos::where('disponible','>',0)->get();
-	$imagenes=array();
-	$i=0;
-	$j=0;
-	foreach($productos as $key){
-		foreach($key->imagenes as $key2){
-			if($key2->pivot->mostrar=="Si" and $i<3){
-				$imagenes[$i]=$key2->url;
-				$i++;
-			}
-		}
-	}
-    return view('welcome',compact('productos','imagenes','j'));
-});
+Route::get('/','ProductosController@welcome');
 
 Auth::routes();
 
