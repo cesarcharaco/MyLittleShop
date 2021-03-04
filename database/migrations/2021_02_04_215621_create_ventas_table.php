@@ -15,6 +15,12 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_user');
+            $table->date('fecha');
+            $table->double('total')->nullable();
+            $table->string('referencia')->nullable();
+
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -27,7 +27,6 @@ class CreateProductosTable extends Migration
             $table->integer('disponible');
             $table->integer('con_detalles')->nullable();
             $table->integer('vendidos')->nullable();
-
             $table->foreign('id_categoria')->references('id')->on('categorias')->onDelete('cascade');
             $table->timestamps();
         });

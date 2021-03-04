@@ -13,7 +13,7 @@ $factory->define(Productos::class, function (Faker $faker) {
 	$existencia=$faker->numberBetween(1,20);
     return [
         'codigo' => $codigo,
-		'nombre' => 'Produto'.$codigo,
+		'nombre' => 'Producto'.$codigo,
 		'id_categoria' => $faker->numberBetween(1,5),
 		'costo' => $costo,
 		'precio_und' => $precio_und,

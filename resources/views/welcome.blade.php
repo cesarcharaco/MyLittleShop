@@ -56,7 +56,8 @@
           <li><a href="#team">Equipo</a></li>
           <li><a href="#gallery">Galería</a></li>
           <li><a href="#contact">Contáctanos</a></li>
-          <li class="#"><a href="">Mi Cuenta</a>
+          @if (Auth::guest())
+          <li class="#"><a href="#">Mi Cuenta</a>
             <ul>
               <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
               {{-- <li class="menu-has-children"><a href="#">Drop Down 2</a>
@@ -73,6 +74,10 @@
               <li><a href="{{ route('login') }}">Registrarse</a></li>
             </ul>
           </li>
+          @else
+            <li class="#"><a href="#">{{ Auth::user()->name }}</a>
+            </li>
+          @endif
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -579,20 +584,35 @@
         <div class="section-header">
           <h3 class="section-title">Productos</h3>
           <span class="section-divider"></span>
-          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+          @if(Auth::guest())
+          <p class="section-description">Para ver los detalles de nuestros productos y comenzar tu compra <a href="{{ route('register') }}">Regístrate</a></p>
+          @else
+          <p class="section-description">Para ver los detalles de nuestros productos y comenzar tu compra ve a <a href="{{ route('ventas.index') }}">La Tiendita</a></p>
+          @endif
         </div>
 
         <div class="row no-gutters">
-
-          <div class="col-lg-4 col-md-6">
-            <div class="gallery-item" data-aos="fade-up">
-              <a href="{{ asset('img_productos/1.PNG') }}" class="gallery-popup">
-                <img src="{{ asset('img_productos/1.PNG') }}" alt="">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
+          @foreach($productos as $key)
+            @foreach($key->imagenes as $key2)
+              @if($key2->pivot->mostrar=="Si")
+                <div class="col-lg-4 col-md-6">
+                  <div class="gallery-item" data-aos="fade-up">
+                    @if(Auth::guest())
+                      {{-- no esta logueado --}}                 
+                    <a href="{{ asset($key2->url) }}" class="gallery-popup">
+                      <img src="{{ asset($key2->url) }}" alt="">
+                    </a>
+                    @else
+                      <a href="{{ asset($key2->url) }}" class="gallery-popup">
+                      <img src="{{ asset($key2->url) }}" alt="">
+                    </a>
+                    @endif
+                  </div>
+                </div>
+              @endif
+            @endforeach
+          @endforeach
+          {{-- <div class="col-lg-4 col-md-6">
             <div class="gallery-item" data-aos="fade-up">
               <a href="{{ asset('img_productos/3.PNG') }}" class="gallery-popup">
                 <img src="{{ asset('img_productos/3.PNG') }}" alt="">
@@ -630,7 +650,7 @@
                 <img src="{{ asset('img_productos/12.PNG') }}" alt="">
               </a>
             </div>
-          </div>
+          </div> --}}
 
         </div>
 
@@ -736,7 +756,7 @@
         <div class="col-lg-6">
           <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
             <a href="#intro" class="scrollto">Home</a>
-            <a href="#Nosotroslass="scrollto">About</a>
+            <a href="#Nosotroslass" class="scrollto">About</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Use</a>
           </nav>

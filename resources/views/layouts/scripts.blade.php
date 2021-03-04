@@ -37,7 +37,12 @@
 <script src="{{ asset('admin/plugins/parsleyjs/i18n/es.js') }}"></script>
 <!-- Select2 -->
 <script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
+<script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 @toastr_js
 @toastr_render
-
+<script type="text/javascript">
+	$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  });
+</script>
 @yield('scripts')

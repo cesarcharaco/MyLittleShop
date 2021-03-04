@@ -17,17 +17,17 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="{{ route('home') }}" class="nav-link {{ Request::is('home') ? 'active':'' }}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>Dashboard <span class="right badge badge-danger">New</span></p>
           </a>
-        </li>
-        <li class="nav-header">HERRAMIENTAS</li>
+        </li> --}}
+        <li class="nav-header">Menú</li>
         <li class="nav-item">
-          <a href="#" class="nav-link {{ Request::is('users*') ? 'active':'' }}">
+          <a href="{!! route('clientes.index') !!}" class="nav-link {{ Request::is('clientes.index*') ? 'active':'' }}">
             <i class="nav-icon fa fa-users"></i>
-            <p>Usuarios <span class="badge badge-info right">2</span></p>
+            <p>Clientes {{-- <span class="badge badge-info right">2</span> --}}</p>
           </a>
         </li>
         <li class="nav-item">
@@ -43,11 +43,19 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{!! route('productos.imagenes') !!}" class="nav-link {{ Request::is('productos.imagenes*') ? 'active':'' }}">
+            
+            <ion-icon name="image-outline"></ion-icon>
+            <p>Imágenes {{-- <span class="badge badge-info right">2</span> --}}</p>
+          </a>
+        </li>
+        
+        {{-- <li class="nav-item">
           <a href="{!! route('ejemplo') !!}" class="nav-link {{ Request::is('ejemplo*') ? 'active':'' }}">
             <i class="nav-icon fa fa-users"></i>
             <p>Ejemplo <span class="badge badge-info right">2</span></p>
           </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
           <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="nav-link">
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>

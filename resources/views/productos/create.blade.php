@@ -47,7 +47,7 @@
           {!! Form::open(['route' => ['productos.store'], 'method' => 'POST', 'name' => 'registrar_producto', 'id' => 'registrar_producto', 'data-parsley-validate', 'enctype' => 'Multipart/form-data']) !!}
             @csrf
             <div class="card-header">
-              <h3 class="card-title" style="margin-top: 5px;"><i class="fa fa-upload"></i> Registro Producto</h3>
+              <h3 class="card-title" style="margin-top: 5px;"><i class="fa fa-upload"></i> Registro</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->

@@ -12,6 +12,6 @@ class Imagenes extends Model
 
     public function productos(){
 
-    	return $this->belongsToMany('App\Productos','productos_has_imagenes','id_imagen','id_producto');
+    	return $this->belongsToMany('App\Productos','productos_has_imagenes','id_imagen','id_producto')->withPivot('mostrar');
     }
 }

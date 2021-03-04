@@ -15,6 +15,12 @@ class CreateCarritosTable extends Migration
     {
         Schema::create('carritos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_venta');
+            $table->unsignedBigInteger('id_producto');
+            $table->integer('cantidad');
+
+            $table->foreign('id_venta')->references('id')->on('ventas')->onDelete('cascade');
+            $table->foreign('id_producto')->references('id')->on('productos')->onDelete('cascade');
             $table->timestamps();
         });
     }

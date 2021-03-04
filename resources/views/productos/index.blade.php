@@ -6,7 +6,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark"><i class="fa fa-users"></i> Productos</h1>
+        <h1 class="m-0 text-dark"><i class="fa fa-suitcase"></i> Productos</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -33,6 +33,7 @@
             </div>
         @endif
         @include('productos.delete')
+        @include('productos.show')
         </div>  
       </div>
   </div><!-- /.container-fluid -->
@@ -87,9 +88,13 @@
                      @endif
                   </td>
                   <td>
-                    <a href="#" class="btn btn-info btn-sm"><i class="fa fa-search"></i></a>
+                    <a href="#" role="button" aria-expanded="false" aria-controls="ShowProducto" class="btn btn-info btn-sm" onclick="showProducto('{{$key->codigo}}','{{$key->nombre}}','{{$key->existencia}}','{{$key->disponibles}}','{{$key->con_detalles}}','{{$key->vendidos}}')" data-toggle="tooltip" data-placement="top" title="Ver detalles del producto"><i class="fa fa-search"></i></a>
+
                     <a href="{{ route('productos.edit',$key->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-pencil-alt"></i></a>
-                    <a href="#" role="button" aria-expanded="false" aria-controls="EliminarProducto" class="btn btn-danger btn-sm" onclick="eliminarProducto('{{$key->id}}')"data-toggle="tooltip" data-placement="top" title="Seleccione para eliminar la producto del sistema"><i class="fa fa-trash"></i></a>
+                    
+                    <a href="#" role="button" aria-expanded="false" aria-controls="EliminarProducto" class="btn btn-danger btn-sm" onclick="eliminarProducto('{{$key->id}}')" data-toggle="tooltip" data-placement="top" title="Seleccione para eliminar la producto del sistema"><i class="fa fa-trash"></i></a>
+
+                    
                   </td>
                 </tr>
                 @endforeach
@@ -149,9 +154,20 @@
     });
   });
   function eliminarProducto(id) {
-        $('#EliminarProducto').modal('show');
-        $('#id_producto').val(id);
-        //$('#lista').fadeOut('fast');
+    $('#EliminarProducto').modal('show');
+    $('#id_producto').val(id);
+    //$('#lista').fadeOut('fast');
   }
+  function showProducto(codigo,nombre,existencia,disponibles,detalles,vendidos){
+    $('#ShowProducto').modal('show');
+    $('#show_codigo').text(codigo);
+    $('#show_nombre').text(nombre);
+    $('#show_existencia').text(existencia);
+    $('#show_detalles').text(detalles);
+    $('#show_vendidos').text(vendidos);
+    $('#show_disponibles').text(disponibles);
+  }
+
+  
 </script>
 @endsection

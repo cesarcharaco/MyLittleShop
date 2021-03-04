@@ -17,9 +17,11 @@ class CreateProductosHasImagenesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_producto');
             $table->unsignedBigInteger('id_imagen');
+            $table->enum('mostrar',['Si','No'])->default('No');
 
             $table->foreign('id_producto')->references('id')->on('productos')->onDelete('cascade');
             $table->foreign('id_imagen')->references('id')->on('imagenes')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

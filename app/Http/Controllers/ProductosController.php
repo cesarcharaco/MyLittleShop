@@ -284,4 +284,45 @@ class ProductosController extends Controller
     }
      return $key;
     }
+
+    public function mostrar(Request $request){
+        //dd($request->all());
+        $productos=Productos::where('existencia','>',0)->get();
+        $contar=0;
+        foreach($productos as $key){
+            foreach($key->imagenes as $key2){
+                if($key2->pivot->mostrar=="Si"){
+                    $contar++;
+                }
+            }
+        }
+        if($contar==6 && $request->status=="No"){
+            toastr()->error('Error!!', 'Ya se alcanzó el límite para mostrar imágenes');
+            return redirect()->back();
+        }else{
+            foreach($productos as $key){
+                foreach($key->imagenes as $key2){
+                    if($key2->id==$request->id_imagen){
+                        if($key2->pivot->mostrar=="No"){
+                            $key2->pivot->mostrar="Si";
+                        }else{
+                            $key2->pivot->mostrar="No";    
+                        }
+                        $key2->pivot->save();
+                    }
+                }
+            }
+
+            toastr()->success('Éxito!!', 'La Imagen será mostrada en el portal');
+            return redirect()->back();
+        }
+    }
+
+    public function imagenes(){
+        //dd('asasas');
+        $productos=Productos::where('existencia','>',0)->get();
+        $i=1;
+        return view('productos.imagenes',compact('productos','i'));
+    }
 }
+    

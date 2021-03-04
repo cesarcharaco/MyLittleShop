@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Ventas;
+use App\Productos;
+use App\User;
+use App\Categorias;
 class VentasController extends Controller
 {
     /**
@@ -13,7 +16,9 @@ class VentasController extends Controller
      */
     public function index()
     {
-        //
+        $productos=Productos::where('disponible','>',0)->get();
+        
+        return view('ventas.index',compact('productos'));
     }
 
     /**
@@ -80,5 +85,12 @@ class VentasController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function show_product($id_producto){
+
+        $producto=Productos::find($id_producto);
+
+        return view('ventas.show_product',compact('producto'));
     }
 }
