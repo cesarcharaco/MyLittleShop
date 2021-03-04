@@ -97,15 +97,15 @@
     <div class="product-screens">
 
       <div class="product-screen-1" data-aos="fade-up" data-aos-delay="400">
-      <img src="{{ asset('img_productos/15.PNG') }}" alt="">
+      <img src="{{ $imagenes[0] }}" alt="">
       </div>
 
       <div class="product-screen-2" data-aos="fade-up" data-aos-delay="200">
-        <img src="{{ asset('img_productos/17.jpg') }}" alt="">
+        <img src="{{ $imagenes[1] }}" alt="">
       </div>
 
       <div class="product-screen-3" data-aos="fade-up">
-        <img src="{{ asset('img_productos/19.jpg') }}" alt="">
+        <img src="{{ $imagenes[2] }}" alt="">
       </div>
 
     </div>
@@ -594,7 +594,8 @@
         <div class="row no-gutters">
           @foreach($productos as $key)
             @foreach($key->imagenes as $key2)
-              @if($key2->pivot->mostrar=="Si")
+              @if($key2->pivot->mostrar=="Si" and $j<6)
+
                 <div class="col-lg-4 col-md-6">
                   <div class="gallery-item" data-aos="fade-up">
                     @if(Auth::guest())
@@ -609,6 +610,7 @@
                     @endif
                   </div>
                 </div>
+                @php $j++; @endphp
               @endif
             @endforeach
           @endforeach

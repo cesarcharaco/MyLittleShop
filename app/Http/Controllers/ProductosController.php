@@ -296,7 +296,7 @@ class ProductosController extends Controller
                 }
             }
         }
-        if($contar==6 && $request->status=="No"){
+        if($contar==9 && $request->status=="No"){
             toastr()->error('Error!!', 'Ya se alcanzó el límite para mostrar imágenes');
             return redirect()->back();
         }else{
