@@ -154,6 +154,7 @@
               <div class="col-md-12">                
                 <div class="form-group">
                   <label for="cantidad">Cantidad</label>
+                  <input type="hidden" name="id_producto" id="id_producto" value="{!!$producto->id!!}">
                   <input type="number" name="cantidad" id="cantidad" placeholder="Ingrese cantidad..." required="required" class="form-control" min="1" max="{!!$producto->existencia!!}">
                 </div>
               </div>
@@ -161,7 +162,7 @@
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Realizar compra </button>
+            <button type="submit" class="btn btn-primary">Realizar compra </button>
           </div>
           </form>
         </div>

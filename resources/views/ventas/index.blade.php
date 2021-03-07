@@ -92,9 +92,13 @@
     <section id="gallery">
       <div class="container-fluid">
         <div class="section-header">
-          <h3 class="section-title">Productos</h3>
+          <h3 class="section-title">Productos</h3>          
           <span class="section-divider"></span>
-          
+          @if (!Auth::guest())
+          <div class="text-right" style="padding: 10px;">
+            <a href="" class="btn btn-sm btn-primary"> Ver carrito...</a>
+          </div>
+          @endif
         </div>
 
         <div class="row no-gutters">
