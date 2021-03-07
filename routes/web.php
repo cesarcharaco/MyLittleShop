@@ -41,3 +41,4 @@ Route::post('pagar','VentasController@pagar')->name('pagar');
 
 
 Route::get('reportes/index','ReportesController@index')->name('reportes.index');
+Route::post('reportes/mostrar','ReportesController@mostrar')->name('mostrar_reporte');

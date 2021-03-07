@@ -110,7 +110,7 @@ class VentasController extends Controller
                 $venta->id_user=\Auth::user()->id;
                 $venta->fecha=date('Y-m-d');
                 //calculando total
-                $total=$producto->precio*$request->cantidad;
+                $total=$producto->precio_und*$request->cantidad;
 
                 $venta->total=$total;
                 $venta->status="En Proceso";
@@ -145,7 +145,7 @@ class VentasController extends Controller
 
                 if($encontrado > 0){
                     
-                    $monto=$producto->precio*$request->cantidad;
+                    $monto=$producto->precio_und*$request->cantidad;
                     $venta->total=$venta->total+$monto;
                     $venta->save();
                     //actualizando cantidad del producto en el carrito
@@ -157,7 +157,7 @@ class VentasController extends Controller
                     toastr()->warning('Alerta!!', 'El producto ya estaba agregado, se ha aumentado la cantidad');
                     return redirect()->back();
                 }else{
-                    $monto=$producto->precio*$request->cantidad;
+                    $monto=$producto->precio_und*$request->cantidad;
                     $venta->total=$venta->total+$monto;
                     $venta->save();
                     //agregando a carrito
@@ -177,12 +177,12 @@ class VentasController extends Controller
     }
 
     public function removeCarrito(Request $request){
-            
+            //dd($request->all());
             $carrito=Carrito::where('id_venta',$request->id_venta)->where('id_producto',$request->id_producto)->first();
             $venta=Ventas::find($request->id_venta);
             $producto=Productos::find($request->id_producto);
-            $monto=$producto->precio*$carrito->cantidad;
-            $venta->total=$venta->total-$cantidad;
+            $monto=$producto->precio_und*$carrito->cantidad;
+            $venta->total=$venta->total-$carrito->cantidad;
             $venta->save();
             $carrito->delete();
 
@@ -191,7 +191,7 @@ class VentasController extends Controller
     }
 
     public function pagar(Request $request){
-
+        //dd($request->all());
         $venta=Ventas::find($request->id_venta);
         $venta->referencia=$request->referencia;
         $venta->status="Esperando Confirmación";

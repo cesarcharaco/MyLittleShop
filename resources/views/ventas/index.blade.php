@@ -161,11 +161,12 @@
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Carrito de compra</h4>
+            <p align="right"><small>Todos los campos <b style="color: red;">*</b> son requeridos.</small></p>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="{!! route('add.carrito') !!}" method="POST">
+          <form action="{!! route('pagar') !!}" method="POST">
             @csrf
           <div class="modal-body">
             <div class="row">
@@ -177,6 +178,7 @@
                     <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Monto</th>
+                    <th>Quitar</th>
                   </tr>
                   {{ carrito() }}
                   <tr>
@@ -184,12 +186,25 @@
                     <td>{{ total() }}</td>
                   </tr>
                 </table>
+
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-1">
+                <input type="hidden" name="id_venta" id="id_venta" value="{{ venta_actual() }}">
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                    <label for="referencia">Referencia de Pago <b style="color: red;">*</b></label>
+                    <input type="text" name="referencia" id="referencia" class="form-control mayusculas" required="required" placeholder="Ingrese el número de referencia de transacción..">
+                  </div>
               </div>
             </div>
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Realizar compra </button>
+            <button type="submit" class="btn btn-primary">Pagar </button>
           </div>
           </form>
         </div>
@@ -198,6 +213,32 @@
       <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+
+    <div class="modal fade" id="QuitarProducto" role="dialog">
+        <div class="modal-dialog modals-default">
+{!! Form::open(['route' => ['remove.carrito'], 'method' => 'POST']) !!}
+    @csrf
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Quitar Producto</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <center>
+                    <h3>¡ATENCIÓN!</h3>
+                    <p>Está a punto de quitar este producto del carrito. Esta opción no se podrá deshacer</p>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="id_producto" id="id_producto">
+                    <input type="hidden" name="id_venta" id="id_venta2">
+                    <button type="submit" class="btn btn-danger" style="border-radius: 50px;">Eliminar</button>
+                </div>
+{!! Form::close() !!}
+            </div>
+        </div>
+    </div>
 
   </main>
 
@@ -224,7 +265,7 @@
         <div class="col-lg-6">
           <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
             <a href="#intro" class="scrollto">Home</a>
-            <a href="#Nosotroslass="scrollto">About</a>
+            <a href="#Nosotroslass" class="scrollto">About</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Use</a>
           </nav>
@@ -232,9 +273,10 @@
       </div>
     </div>
   </footer><!-- #footer -->
-
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
+  @toastr_js
+  @toastr_render
   <!-- JavaScript Libraries -->
   <script src="{{ asset('avilon/lib/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('avilon/lib/jquery/jquery-migrate.min.js') }}"></script>
@@ -250,6 +292,13 @@
 
   <!-- Template Main Javascript File -->
   <script src="{{ asset('avilon/js/main1.js') }}"></script>
-
+  <script type="text/javascript">
+    function QuitarProducto(id_producto,id_venta){
+      
+      $('#QuitarProducto').modal('show');
+      $('#id_producto').val(id_producto);
+      $('#id_venta2').val(id_venta);
+    }
+  </script>
 </body>
 </html>

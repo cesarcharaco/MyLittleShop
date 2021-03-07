@@ -207,7 +207,9 @@
   </footer><!-- #footer -->
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
+  
+@toastr_js
+@toastr_render
   <!-- JavaScript Libraries -->
   <script src="{{ asset('avilon/lib/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('avilon/lib/jquery/jquery-migrate.min.js') }}"></script>
