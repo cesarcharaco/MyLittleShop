@@ -601,11 +601,11 @@
                     @if(Auth::guest())
                       {{-- no esta logueado --}}                 
                     <a href="{{ asset($key2->url) }}" class="gallery-popup">
-                      <img src="{{ asset($key2->url) }}" alt="">
+                      <img src="{{ asset($key2->url) }}" alt="" style="width: 100%; height: 490px; padding: 10px;">
                     </a>
                     @else
                       <a href="{{ asset($key2->url) }}" class="gallery-popup">
-                      <img src="{{ asset($key2->url) }}" alt="">
+                      <img src="{{ asset($key2->url) }}" alt="" style="width: 100%; height: 490px; padding: 10px;">
                     </a>
                     @endif
                   </div>
@@ -674,7 +674,7 @@
                 <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                 <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
                 <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-          Nosotros href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
                 <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
               </div>
             </div>
