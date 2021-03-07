@@ -170,6 +170,7 @@
           <div class="modal-body">
             <div class="row">
               <div class="col-md-12">
+                
                 <table border="1" width="100%">
                   <tr>
                     <th>No.</th>
@@ -177,15 +178,10 @@
                     <th>Cantidad</th>
                     <th>Monto</th>
                   </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                  {{ carrito() }}
                   <tr>
                     <th colspan="3" style="text-align: right;">Total</th>
-                    <td></td>
+                    <td>{{ total() }}</td>
                   </tr>
                 </table>
               </div>
