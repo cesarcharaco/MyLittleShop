@@ -101,7 +101,34 @@
           @foreach($productos as $key)
             @foreach($key->imagenes as $key2)
               @if($key2->pivot->mostrar=="Si")
-                <div class="col-lg-4 col-md-6">
+                <div class="col-12 col-sm-6 col-md-3 d-flex align-items-stretch pt-3 mb-3" style="padding: 10px;">
+                  <div class="card bg-light">
+                    <div class="card-header text-muted border-bottom-0">
+                      {!!$key->nombre!!}
+                    </div>
+                    <div class="card-body pt-0">
+                      <div class="row">
+                        <div class="col-7"><br>
+                          <p class="text-muted text-sm"><b>Precio: </b> {!!$key->precio_und!!} </p>
+                          <p class="text-muted text-sm"><b>Cantidad disponible: </b> {!!$key->existencia!!} </p>
+                        </div>
+                        <div class="col-5 text-center">
+                          <div class="gallery-item" data-aos="fade-up">
+                            <a href="{{ asset($key2->url) }}" class="gallery-popup">
+                              <img src="{{ asset($key2->url) }}" alt="" class="img-circle img-fluid">
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="text-right">
+                        <a href="#" class="btn btn-sm btn-primary"> Ver más...</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-lg-4 col-md-6">
                   <div class="gallery-item" data-aos="fade-up">
                     @if(Auth::guest())
                                  
@@ -114,7 +141,7 @@
                     </a>
                     @endif
                   </div>
-                </div>
+                </div> -->
               @endif
             @endforeach
           @endforeach
