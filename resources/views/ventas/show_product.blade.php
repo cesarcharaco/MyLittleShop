@@ -96,13 +96,20 @@
             <div class="col-12 col-sm-6">
               <h3 class="d-inline-block d-sm-none">{!!$producto->nombre!!}</h3>
               <div class="col-12">
+                @php $i=0; @endphp
                 @foreach($producto->imagenes as $key)
+                @if($i==0)
                   <img src="{!! asset($key->url) !!}" class="product-image" alt="Product Image" style="padding: 10px; height: 500px;">
+                  @php $i++; @endif
+                @endif
                 @endforeach
               </div>
               <div class="col-12 product-image-thumbs">
+                
                 @foreach($producto->imagenes as $key)
+                
                 <div class="product-image-thumb active"><img src="{!! asset($key->url) !!}" alt="Product Image"></div>
+                
                 @endforeach
               </div>
             </div>
