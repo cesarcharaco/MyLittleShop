@@ -2,10 +2,17 @@
 @section('css')
 <style type="text/css" media="screen">
   img {
-        display: block;
-        margin: 0 auto;
-        max-width: 25%;
-      }
+    display: block;
+    margin: 0 auto;
+    max-width: 25%;
+  }
+  @media only screen and (max-width: 767px) {
+    img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+  }
 </style>
 <link href="{{ asset('avilon/lib/aos/aos.css" rel="stylesheet') }}">
 <link href="{{ asset('avilon/lib/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
@@ -17,7 +24,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark"><i class="fa fa-suitcase"></i>Productos</h1>
+        <h1 class="m-0 text-dark"><i class="fa fa-suitcase"></i> Productos</h1>
       </div><!-- /.col -->
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">

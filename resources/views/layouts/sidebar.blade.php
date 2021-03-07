@@ -45,14 +45,14 @@
         <li class="nav-item">
           <a href="{!! route('productos.imagenes') !!}" class="nav-link {{ Request::is('productos.imagenes*') ? 'active':'' }}">
             <i class="nav-icon fa fa-image"></i>
-            <ion-icon name="image-outline"></ion-icon>
+            <!-- <ion-icon name="image-outline"></ion-icon> -->
             <p>Imágenes {{-- <span class="badge badge-info right">2</span> --}}</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="{!! route('reportes.index') !!}" class="nav-link {{ Request::is('reportes.index*') ? 'active':'' }}">
             
-            <i class="nav-icon fa fa-bell"></i>
+            <i class="nav-icon fas fa-chart-pie"></i>
             <p>Reportes {{-- <span class="badge badge-info right">2</span> --}}</p>
           </a>
         </li>
