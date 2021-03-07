@@ -123,7 +123,7 @@
                     </div>
                     <div class="card-footer">
                       <div class="text-right">
-                        <a href="#" class="btn btn-sm btn-primary"> Ver más...</a>
+                        <a href="{!! route('show_product', $key->id) !!}" class="btn btn-sm btn-primary"> Ver más...</a>
                       </div>
                     </div>
                   </div>
