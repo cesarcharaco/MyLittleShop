@@ -7,6 +7,8 @@
         max-width: 25%;
       }
 </style>
+<link href="{{ asset('avilon/lib/aos/aos.css" rel="stylesheet') }}">
+<link href="{{ asset('avilon/lib/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
 @endsection
 @section('title')Imágenes de Productos @endsection
 @section('content')
@@ -77,11 +79,10 @@
                 <tr>
                   <td>{{ $i++ }}</td>
                   <td>
-                    
-                    <a href="{{ asset($key2->url) }}"  class="gallery-popup"><img src="{{ asset($key2->url) }}"  /></a>
-                    
-                  </td>
-                  
+                    <div class="gallery-item" data-aos="fade-up">
+                      <a href="{{ asset($key2->url) }}"  class="gallery-popup"><img src="{{ asset($key2->url) }}"  /></a>
+                    </div>
+                  </td>                  
                   <td>
                     @if($key2->pivot->mostrar=="Si")
                     <p class="text-success"><b><i class="fa fa-check-circle"></i> Mostrada</b></p>
@@ -133,4 +134,14 @@
     //$('#lista').fadeOut('fast');
   }
 </script>
+  <script src="{{ asset('avilon/lib/aos/aos.js') }}"></script>
+  <script src="{{ asset('avilon/lib/superfish/hoverIntent.js') }}"></script>
+  <script src="{{ asset('avilon/lib/superfish/superfish.min.js') }}"></script>
+  <script src="{{ asset('avilon/lib/magnific-popup/magnific-popup.min.js') }}"></script>
+
+  <!-- Contact Form JavaScript File -->
+  <script src="{{ asset('avilon/contactform/contactform.js') }}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{{ asset('avilon/js/main.js') }}"></script>
 @endsection

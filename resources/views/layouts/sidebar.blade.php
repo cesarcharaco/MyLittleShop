@@ -44,7 +44,7 @@
         </li>
         <li class="nav-item">
           <a href="{!! route('productos.imagenes') !!}" class="nav-link {{ Request::is('productos.imagenes*') ? 'active':'' }}">
-            
+            <i class="nav-icon fa fa-image"></i>
             <ion-icon name="image-outline"></ion-icon>
             <p>Imágenes {{-- <span class="badge badge-info right">2</span> --}}</p>
           </a>
