@@ -125,7 +125,7 @@
               </div>
 
               <div class="mt-4">
-                <div class="btn btn-primary btn-lg btn-flat">
+                <div class="btn btn-primary btn-lg btn-flat" data-toggle="modal" data-target="#modal-lg">
                   <i class="fas fa-cart-plus fa-lg mr-2"></i> 
                   Agregar al carrito
                 </div>
@@ -138,7 +138,28 @@
 
       </div>
     </section><!-- #gallery -->
-
+    <div class="modal fade" id="modal-lg">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Carrito de compra</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>One fine body&hellip;</p>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Realizar compra</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
   </main>
 
@@ -165,7 +186,7 @@
         <div class="col-lg-6">
           <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
             <a href="#intro" class="scrollto">Home</a>
-            <a href="#Nosotroslass="scrollto">About</a>
+            <a href="#Nosotroslass" class="scrollto">About</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Use</a>
           </nav>
