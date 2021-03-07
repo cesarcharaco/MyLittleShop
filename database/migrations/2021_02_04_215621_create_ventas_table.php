@@ -19,7 +19,7 @@ class CreateVentasTable extends Migration
             $table->date('fecha');
             $table->double('total')->nullable();
             $table->string('referencia')->nullable();
-
+            $table->enum('status',['En Proceso','Esperando Confirmación','Aprobada','Declinada']);
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

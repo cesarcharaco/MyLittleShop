@@ -32,3 +32,5 @@ Route::get('/create_ejemplo', 'HomeController@create_ejemplo')->name('create_eje
 
 Route::resource('ventas','VentasController');
 Route::get('show/{id_producto}/product','VentasController@show_product')->name('show_product');
+
+Route::get('reportes/index','ReportesController@index')->name('reportes.index');

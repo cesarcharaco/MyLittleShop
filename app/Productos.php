@@ -24,4 +24,9 @@ class Productos extends Model
 
         return $this->belongsToMany('App\Ventas','productos_has_ventas','id_producto','id_venta')->withPivot('cantidad');
     }
+
+    public function carrito(){
+
+        return $this->hasMany('App\Carrito','id_producto','id');
+    }
 }

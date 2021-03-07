@@ -8,7 +8,7 @@ class Ventas extends Model
 {
     protected $table='ventas';
 
-    protected $fillable=['id_user','fecha','total','referencia'];
+    protected $fillable=['id_user','fecha','total','referencia','status'];
 
     public function productos(){
 
@@ -18,5 +18,10 @@ class Ventas extends Model
     public function users(){
 
     	return $this->belongsTo('App\User','id_user');
+    }
+
+    public function carrito(){
+
+    	return $this->hasMany('App\Carrito','id_venta','id');
     }
 }

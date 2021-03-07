@@ -49,6 +49,13 @@
             <p>Imágenes {{-- <span class="badge badge-info right">2</span> --}}</p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{!! route('reportes.index') !!}" class="nav-link {{ Request::is('reportes.index*') ? 'active':'' }}">
+            
+            <i class="nav-icon fa fa-bell"></i>
+            <p>Reportes {{-- <span class="badge badge-info right">2</span> --}}</p>
+          </a>
+        </li>
         
         {{-- <li class="nav-item">
           <a href="{!! route('ejemplo') !!}" class="nav-link {{ Request::is('ejemplo*') ? 'active':'' }}">
