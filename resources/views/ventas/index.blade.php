@@ -26,6 +26,8 @@
 
   <!-- Main Stylesheet File -->
   <link href="{{ asset('avilon/css/style.css') }}" rel="stylesheet">
+  <!-- Font Awesome -->
+<link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
 
   <!-- =======================================================
     Theme Name: My Little Shop
@@ -96,7 +98,7 @@
           <span class="section-divider"></span>
           @if (!Auth::guest())
           <div class="text-right" style="padding: 10px;">
-            <a href="" class="btn btn-sm btn-primary"> Ver carrito...</a>
+            <a href="" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#carrito-lg"><i class="fas fa-cart-plus fa-xs mr-2"></i>  Ver carrito ({!! cuantos() !!})</a>
           </div>
           @endif
         </div>
@@ -154,7 +156,52 @@
 
       </div>
     </section><!-- #gallery -->
-
+    <div class="modal fade" id="carrito-lg">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Carrito de compra</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="{!! route('add.carrito') !!}" method="POST">
+            @csrf
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <table border="1" width="100%">
+                  <tr>
+                    <th>No.</th>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Monto</th>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th colspan="3" style="text-align: right;">Total</th>
+                    <td></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Realizar compra </button>
+          </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
   </main>
 

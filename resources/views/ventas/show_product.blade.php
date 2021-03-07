@@ -142,7 +142,7 @@
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Carrito de compra</h4>
+            <h4 class="modal-title">Agregar producto al carrito de compra</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -162,7 +162,7 @@
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Realizar compra </button>
+            <button type="submit" class="btn btn-primary">Agregar </button>
           </div>
           </form>
         </div>
