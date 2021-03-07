@@ -97,7 +97,8 @@ class VentasController extends Controller
 
     public function addCarrito(Request $request){
         $buscar=Ventas::where('id_user',\Auth::user()->id)->where('status','En Proceso')->count();
-        if($buscar>0){
+        //dd($buscar);
+        if($buscar==0){
             //buscando disponibilidad con respecto a la cantidad solicitada
             $producto=Productos::find($request->id_producto);
             if($producto->disponible < $request->cantidad){
@@ -129,7 +130,9 @@ class VentasController extends Controller
             }
 
         }else{
+            //ya existe una venta en proceso
             $venta=Ventas::where('id_user',\Auth::user()->id)->where('status','En Proceso')->first();
+
             $producto=Productos::find($request->id_producto);
 
             if($producto->disponible < $request->cantidad){
@@ -137,7 +140,9 @@ class VentasController extends Controller
                 return redirect()->back();                
             }else{
                 //buscando en el carrito el producto ya cargado
+                
                 $encontrado=Carrito::where('id_venta',$venta->id)->where('id_producto',$request->id_producto)->count();
+
                 if($encontrado > 0){
                     
                     $monto=$producto->precio*$request->cantidad;
@@ -240,4 +245,6 @@ class VentasController extends Controller
             return redirect()->back();          
         }
     }
+
+    
 }
