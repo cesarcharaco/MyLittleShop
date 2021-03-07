@@ -32,5 +32,12 @@ Route::get('/create_ejemplo', 'HomeController@create_ejemplo')->name('create_eje
 
 Route::resource('ventas','VentasController');
 Route::get('show/{id_producto}/product','VentasController@show_product')->name('show_product');
+Route::post('agregar/carrito','VentasController@addCarrito')->name('add.carrito');
+Route::post('remover/carrito','VentasController@removeCarrito')->name('remove.carrito');
+Route::post('pagar','VentasController@pagar')->name('pagar');
+Route::post('validar/venta','VentasController@validarVenta')->name('validar.venta');
+Route::post('pagar','VentasController@pagar')->name('pagar');
+
+
 
 Route::get('reportes/index','ReportesController@index')->name('reportes.index');
