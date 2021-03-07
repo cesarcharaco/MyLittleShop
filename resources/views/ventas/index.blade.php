@@ -202,7 +202,7 @@
   <script src="{{ asset('avilon/contactform/contactform.js') }}"></script>
 
   <!-- Template Main Javascript File -->
-  <script src="{{ asset('avilon/js/main.js') }}"></script>
+  <script src="{{ asset('avilon/js/main1.js') }}"></script>
 
 </body>
 </html>
