@@ -147,13 +147,23 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          <form action="{!! route('add.carrito') !!}" method="POST">
+            @csrf
           <div class="modal-body">
-            <p>One fine body&hellip;</p>
+            <div class="row">
+              <div class="col-md-12">                
+                <div class="form-group">
+                  <label for="cantidad">Cantidad</label>
+                  <input type="number" name="cantidad" id="cantidad" placeholder="Ingrese cantidad..." required="required" class="form-control" min="1" max="{!!$producto->existencia!!}">
+                </div>
+              </div>
+            </div>
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary">Realizar compra</button>
+            <button type="button" class="btn btn-primary">Realizar compra </button>
           </div>
+          </form>
         </div>
         <!-- /.modal-content -->
       </div>
