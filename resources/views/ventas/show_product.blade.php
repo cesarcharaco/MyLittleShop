@@ -100,7 +100,7 @@
                 @foreach($producto->imagenes as $key)
                 @if($i==0)
                   <img src="{!! asset($key->url) !!}" class="product-image" alt="Product Image" style="padding: 10px; height: 500px;">
-                  @php $i++; @endif
+                  @php $i++; @endphp
                 @endif
                 @endforeach
               </div>
