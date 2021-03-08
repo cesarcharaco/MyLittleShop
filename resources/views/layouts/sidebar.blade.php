@@ -24,6 +24,7 @@
           </a>
         </li> --}}
         <li class="nav-header">Menú</li>
+        @if(\Auth::user()->type_user=="Admin")
         <li class="nav-item">
           <a href="{!! route('clientes.index') !!}" class="nav-link {{ Request::is('clientes.index*') ? 'active':'' }}">
             <i class="nav-icon fa fa-users"></i>
@@ -50,10 +51,31 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{!! route('ventas.por.verificar') !!}" class="nav-link {{ Request::is('ventas.por.verificar*') ? 'active':'' }}">
+            
+            <i class="nav-icon fa fa-money"></i>
+            <p>Ventas P/Confirmar {{-- <span class="badge badge-info right">2</span> --}}</p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{!! route('reportes.index') !!}" class="nav-link {{ Request::is('reportes.index*') ? 'active':'' }}">
             
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>Reportes {{-- <span class="badge badge-info right">2</span> --}}</p>
+          </a>
+        </li>
+        @endif
+        <li class="nav-item">
+          <a href="{!! route('ventas.listar') !!}" class="nav-link {{ Request::is('ventas.listar*') ? 'active':'' }}">
+            
+            <i class="nav-icon fa fa-money"></i>
+            <p>Ventas {{-- <span class="badge badge-info right">2</span> --}}</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{!! route('perfil.index') !!}" class="nav-link {{ Request::is('perfil.index*') ? 'active':'' }}">
+            <i class="nav-icon fa fa-user"></i>
+            <p>Perfil {{-- <span class="badge badge-info right">2</span> --}}</p>
           </a>
         </li>
         

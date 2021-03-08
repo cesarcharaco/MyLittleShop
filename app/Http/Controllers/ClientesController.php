@@ -177,4 +177,9 @@ class ClientesController extends Controller
         toastr()->success('Éxito!!', 'Status del Cliente cambiado');
                 return redirect()->to('clientes');
     }
+
+    public function perfil(){
+
+        return view('clientes.perfil');
+    }
 }

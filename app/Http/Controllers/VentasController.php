@@ -202,7 +202,7 @@ class VentasController extends Controller
     }
 
     public function validarVenta(Request $request){
-
+        //dd($request->all());
         if($request->opcion=="Aprobar"){
             $venta=Ventas::find($request->id_venta);
             $carrito=Carrito::where('id_venta',$request->id_venta)->get();
@@ -246,5 +246,23 @@ class VentasController extends Controller
         }
     }
 
-    
+    public function ventas_por_verificar(){
+
+        $ventas=Ventas::where('status','Esperando Confirmación')->get();
+        $i=1;
+        return view('ventas.porverificar',compact('ventas','i'));
+        
+    }
+    public function listar(){
+        $ventas=Ventas::all();
+        $i=1;
+        return view('ventas.ventas',compact('ventas','i'));
+    }
+
+    public function detalles($id_venta){
+        $venta=Ventas::find($id_venta);
+        $i=1;
+        return view('ventas.detalles',compact('venta','i'));
+    }
+
 }

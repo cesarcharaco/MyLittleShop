@@ -28,7 +28,7 @@ Route::resource('clientes','ClientesController');
 Route::post('clientes/cambiar_status','ClientesController@cambiar_status')->name('clientes.cambiar_status');
 Route::get('/ejemplo', 'HomeController@ejemplo')->name('ejemplo');
 Route::get('/create_ejemplo', 'HomeController@create_ejemplo')->name('create_ejemplo');
-
+Route::get('perfil','ClientesController@perfil')->name('perfil.index');
 
 Route::resource('ventas','VentasController');
 Route::get('show/{id_producto}/product','VentasController@show_product')->name('show_product');
@@ -37,7 +37,10 @@ Route::post('remover/carrito','VentasController@removeCarrito')->name('remove.ca
 Route::post('pagar','VentasController@pagar')->name('pagar');
 Route::post('validar/venta','VentasController@validarVenta')->name('validar.venta');
 Route::post('pagar','VentasController@pagar')->name('pagar');
-
+Route::get('porverificar','VentasController@ventas_por_verificar')->name('ventas.por.verificar');
+Route::post('cerrar/venta','VentasController@validarVenta')->name('cerrar.venta');
+Route::get('listar/ventas','VentasController@listar')->name('ventas.listar');
+Route::get('ventas/{id_venta}/detalles','VentasController@detalles')->name('ventas.detalles');
 
 
 Route::get('reportes/index','ReportesController@index')->name('reportes.index');

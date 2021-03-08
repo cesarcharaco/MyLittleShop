@@ -68,7 +68,7 @@ class ReportesController extends Controller
 		    			foreach($ventas as $key){
 		    				switch($key->status){
 		    					case 'En Proceso': $en_proceso++; break;
-		    					case 'Esperando por Confirmación': $esperando++; break;
+		    					case 'Esperando Confirmación': $esperando++; break;
 		    					case 'Aprobada': $aprobada++; break;
 		    					case 'Declinada': $declinada++; break;
 		    				}
@@ -90,7 +90,7 @@ class ReportesController extends Controller
 		    			foreach($ventas as $key){
 		    				switch($key->status){
 		    					case 'En Proceso': $en_proceso++; break;
-		    					case 'Esperando por Confirmación': $esperando++; break;
+		    					case 'Esperando Confirmación': $esperando++; break;
 		    					case 'Aprobada': $aprobada++; break;
 		    					case 'Declinada': $declinada++; break;
 		    				}
@@ -116,7 +116,7 @@ class ReportesController extends Controller
 		    			foreach($ventas as $key){
 		    				switch($key->status){
 		    					case 'En Proceso': $en_proceso++; break;
-		    					case 'Esperando por Confirmación': $esperando++; break;
+		    					case 'Esperando Confirmación': $esperando++; break;
 		    					case 'Aprobada': $aprobada++; break;
 		    					case 'Declinada': $declinada++; break;
 		    				}
@@ -138,7 +138,7 @@ class ReportesController extends Controller
 		    			foreach($ventas as $key){
 		    				switch($key->status){
 		    					case 'En Proceso': $en_proceso++; break;
-		    					case 'Esperando por Confirmación': $esperando++; break;
+		    					case 'Esperando Confirmación': $esperando++; break;
 		    					case 'Aprobada': $aprobada++; break;
 		    					case 'Declinada': $declinada++; break;
 		    				}
