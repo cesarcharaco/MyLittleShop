@@ -36,8 +36,8 @@
     Author: BootstrapMade.com
     License: https://bootstrapmade.com/license/
   ======================================================= -->
+  @toastr_css
 </head>
-
   <!--==========================
     Header
   ============================-->
@@ -45,7 +45,7 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <h1><a href="#intro" class="scrollto">My Little Shop</a></h1>
+        <h1><a href="#intro" class="scrollto" style="color: black;">My Little Shop</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         {{-- <a href="#intro"><img src="logo.png" style="width: 40%" alt="" title="" /></img></a> --}}
       </div>
@@ -86,6 +86,7 @@
     </div>
   </header><!-- #header -->
   <main id="main">
+  @include('flash::message')
     <section id="gallery">
       <div class="container-fluid">
         <div class="section-header">
@@ -208,8 +209,6 @@
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
   
-@toastr_js
-@toastr_render
   <!-- JavaScript Libraries -->
   <script src="{{ asset('avilon/lib/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('avilon/lib/jquery/jquery-migrate.min.js') }}"></script>
@@ -231,5 +230,7 @@
 <!-- <script src="{{ asset('js/pages/dashboard.js') }}"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('admin/js/demo.js') }}"></script>
+@toastr_js
+@toastr_render
 </body>
 </html>

@@ -51,9 +51,8 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{!! route('ventas.por.verificar') !!}" class="nav-link {{ Request::is('ventas.por.verificar*') ? 'active':'' }}">
-            
-            <i class="nav-icon fa fa-money"></i>
+          <a href="{!! route('ventas.por.verificar') !!}" class="nav-link {{ Request::is('ventas.por.verificar*') ? 'active':'' }}">            
+            <i class="nav-icon fa fa-money-check-alt"></i>
             <p>Ventas P/Confirmar {{-- <span class="badge badge-info right">2</span> --}}</p>
           </a>
         </li>
@@ -68,7 +67,7 @@
         <li class="nav-item">
           <a href="{!! route('ventas.listar') !!}" class="nav-link {{ Request::is('ventas.listar*') ? 'active':'' }}">
             
-            <i class="nav-icon fa fa-money"></i>
+            <i class="nav-icon fa fa-shopping-cart"></i>
             <p>Ventas {{-- <span class="badge badge-info right">2</span> --}}</p>
           </a>
         </li>

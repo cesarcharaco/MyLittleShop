@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  @toastr_css
   <title>My Little Shop</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
@@ -36,7 +37,7 @@
     License: https://bootstrapmade.com/license/
   ======================================================= -->
 </head>
-
+@include('flash::message')
   <!--==========================
     Header
   ============================-->
@@ -44,7 +45,7 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <h1><a href="#intro" class="scrollto">My Little Shop</a></h1>
+        <h1><a href="#intro" class="scrollto" style="color: black;">My Little Shop</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         {{-- <a href="#intro"><img src="logo.png" style="width: 40%" alt="" title="" /></img></a> --}}
       </div>
