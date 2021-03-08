@@ -9,8 +9,8 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="{{ asset('avilon/img/favicon.png') }}" rel="icon">
-  <link href="{{ asset('avilon/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{ asset('logo.png') }}" rel="icon">
+  {{-- <link href="{{ asset('avilon/img/apple-touch-icon.png')}}" rel="apple-touch-icon"> --}}
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -42,8 +42,9 @@
   <header id="header">
     <div class="container">
 
+        <div class="product-image-thumb active form-inline" style="position: absolute;"><img src="{!! asset('logo.png') !!}" style="width: 30px;" alt="Product Image"></div>
       <div id="logo" class="pull-left">
-        <h1><a href="#intro" class="scrollto">My Little Shop</a></h1>
+        <h1><a href="#intro" class="scrollto">&nbsp;&nbsp;&nbsp;My Little Shop</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         {{-- <a href="#intro"><img src="logo.png" style="width: 40%" alt="" title="" /></img></a> --}}
       </div>
@@ -90,6 +91,7 @@
   <section id="intro">
 
     <div class="intro-text">
+      
       <h2>Bienvenido a My Little Shop</h2>
       <p>Tenemos los mejores precios con mejor calidad en el mercado</p>
       <a href="#about" class="btn-get-started scrollto">Comienza</a>
@@ -586,7 +588,7 @@
           <h3 class="section-title">Productos</h3>
           <span class="section-divider"></span>
           @if(Auth::guest())
-          <p class="section-description">Para ver los detalles de nuestros productos y comenzar tu compra <a href="{{ route('register') }}">Regístrate</a></p>
+          <p class="section-description">Para ver los detalles de nuestros productos y comenzar tu compra <a href="{{ route('login') }}">Regístrate</a></p>
           @else
           <p class="section-description">Para ver los detalles de nuestros productos y comenzar tu compra ve a <a href="{{ route('ventas.index') }}">La Tiendita</a></p>
           @endif

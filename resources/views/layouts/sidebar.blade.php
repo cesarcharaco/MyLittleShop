@@ -9,7 +9,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mb-3 d-flex">      
       <div class="brand-link text-center">
-        <a href="#" class="brand-text font-weight-light" style="text-transform: uppercase;">{!! Auth::user()->name !!}</a>
+        <a href="#" class="brand-text font-weight-light" style="text-transform: uppercase;">@if(!\Auth::guest()) {!! Auth::user()->name !!} @endif</a>
       </div>
     </div>
     <!-- Sidebar Menu -->
@@ -24,6 +24,7 @@
           </a>
         </li> --}}
         <li class="nav-header">Menú</li>
+        @if(!\Auth::guest()) 
         @if(\Auth::user()->type_user=="Admin")
         <li class="nav-item">
           <a href="{!! route('clientes.index') !!}" class="nav-link {{ Request::is('clientes.index*') ? 'active':'' }}">
@@ -63,6 +64,7 @@
             <p>Reportes {{-- <span class="badge badge-info right">2</span> --}}</p>
           </a>
         </li>
+        @endif
         @endif
         <li class="nav-item">
           <a href="{!! route('ventas.listar') !!}" class="nav-link {{ Request::is('ventas.listar*') ? 'active':'' }}">

@@ -3,7 +3,7 @@
 <head>
     <title>Mi Cuenta</title>
     <!-- Site favicon -->
-    <link rel="shortcut icon" href="{{ asset('acceder/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('logo.png') }}">
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Google Font -->
@@ -26,7 +26,7 @@
     <div class="header-wrap">
         <div class="clearfix">
             <div class="logo">
-                <a href="{{ url('/') }}"><img src="{{ asset('logo.PNG') }}" style="width: 20% !important" alt=""><font size="7">My Little Shop</font></a>
+                <a href="{{ url('/') }}"><img src="{{ asset('logo.png') }}" style="width: 20% !important" alt=""><font size="7">My Little Shop</font></a>
             </div>
             
         </div>

@@ -53,3 +53,24 @@ function venta_actual(){
 		return 0;
 	}
 }
+
+function venta_hoy_ep(){
+	$hoy=date('Y-m-d');
+	$venta=App\Ventas::where('fecha',$hoy)->where('status','En Proceso')->count();
+
+	return $venta;
+}
+
+function venta_hoy_ap(){
+	$hoy=date('Y-m-d');
+	$venta=App\Ventas::where('fecha',$hoy)->where('status','Aprobada')->count();
+
+	return $venta;
+}
+
+function clientes(){
+
+	$clientes=App\User::where('type_user','Cliente')->count();
+
+	return $clientes;
+}

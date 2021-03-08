@@ -13,7 +13,9 @@
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
       <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button" style="text-transform: uppercase;">
-        <i class="fas fa-th-large"></i> {!! \Auth::User()->type_user !!}
+        @if(!\Auth::guest())
+        <i class="fas fa-th-large"></i> {!! \Auth::user()->type_user !!}
+        @endif
       </a>
     </li>
   </ul>
